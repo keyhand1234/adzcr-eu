@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADZČR, z.s. - Asociace dobrovolných záchranářů ČR</title>
+    <style>
+        :root {
+            --primary: #0F2537;
+            --secondary: #D9232D;
+            --bg-light: #F8FAFC;
+            --text: #1E293B;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span { color: var(--secondary); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--secondary); }
+
+        .btn-donate {
+            background: var(--secondary);
+            color: var(--white) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .btn-donate:hover { background: #b81922; }
+
+        .hero {
+            background: linear-gradient(rgba(15, 37, 55, 0.85), rgba(15, 37, 55, 0.85)), 
+                        url('https://images.unsplash.com/photo-1587745416684-47953f16f02f?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: left;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            max-width: 700px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.8rem 1.8rem;
+            font-weight: 700;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .btn-main:hover { opacity: 0.9; }
+
+        .section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+        }
+
+        .grid-6e {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card-e {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .card-e h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">✚ ADZ<span>ČR</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">O nás</a></li>
+                    <li><a href="#">Aktuality</a></li>
+                    <li><a href="#">Činnost</a></li>
+                    <li><a href="#">Hodnoty (6E)</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#" class="btn-donate">Podpořte nás</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Asociace dobrovolných záchranářů ČR, z.s.</h1>
+            <p>Poskytujeme zdravotnický dohled, školení první pomoci a technickou pomoc při akcích.</p>
+            <a href="#" class="btn-main">Zjistit více</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Naše filozofie (6E)</h2>
+        <div class="grid-6e">
+            <div class="card-e"><h3>Erudice</h3><p>Odborné znalosti a neustálé profesní zdokonalování.</p></div>
+            <div class="card-e"><h3>Empirie</h3><p>Zkušenosti získané přímo z reálné praxe v terénu.</p></div>
+            <div class="card-e"><h3>Edukace</h3><p>Vzdělávání veřejnosti a předávání první pomoci dalším.</p></div>
+            <div class="card-e"><h3>Efektivita</h3><p>Rychlé a přesné rozhodování při zásazích.</p></div>
+            <div class="card-e"><h3>Energie</h3><p>Nasazení a odhodlání pomáhat tam, kde je potřeba.</p></div>
+            <div class="card-e"><h3>Empatie</h3><p>Lidský přístup, porozumění a týmová synergie.</p></div>
+        </div>
+    </section>
+
+</body>
+</html>
