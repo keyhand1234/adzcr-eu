@@ -4,34 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADZČR, z.s. - Asociace dobrovolných záchranářů ČR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0F2537;
-            --secondary: #D9232D;
-            --bg-light: #F8FAFC;
-            --text: #1E293B;
-            --white: #FFFFFF;
+            --primary: #0e1e2e;
+            --accent-red: #d9232d;
+            --bg-gray: #f4f6f9;
+            --text-dark: #222222;
+            --white: #ffffff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text);
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
             line-height: 1.6;
+        }
+
+        .top-bar {
+            background: var(--accent-red);
+            color: var(--white);
+            padding: 6px 20px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
         header {
             background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .nav-container {
@@ -40,160 +59,499 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 12px 20px;
         }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--primary);
+        .logo-brand {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        .logo span { color: var(--secondary); }
+        .logo-icon {
+            background: var(--accent-red);
+            color: var(--white);
+            width: 42px;
+            height: 42px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+        }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 20px;
             align-items: center;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            transition: color 0.3s;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            cursor: pointer;
         }
 
-        nav a:hover { color: var(--secondary); }
+        nav a:hover { color: var(--accent-red); }
 
-        .btn-donate {
-            background: var(--secondary);
+        .btn-header {
+            background: var(--accent-red);
             color: var(--white) !important;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            transition: background 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
         }
-
-        .btn-donate:hover { background: #b81922; }
 
         .hero {
-            background: linear-gradient(rgba(15, 37, 55, 0.85), rgba(15, 37, 55, 0.85)), 
-                        url('https://images.unsplash.com/photo-1587745416684-47953f16f02f?auto=format&fit=crop&w=1200&q=80') center/cover;
+            background: linear-gradient(rgba(14, 30, 46, 0.88), rgba(14, 30, 46, 0.88)),
+                        url('https://images.unsplash.com/photo-1587745416684-47953f16f02f?auto=format&fit=crop&w=1600&q=80') center/cover;
             color: var(--white);
-            padding: 5rem 2rem;
-            text-align: left;
+            padding: 40px 20px;
         }
 
-        .hero-container {
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 20px 10px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .feature-box:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .feature-box i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .feature-box span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .hero-headline h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .hero-headline p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .contact-number-box {
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 12px 24px;
+            border-left: 4px solid var(--accent-red);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .contact-number-box span {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #aaa;
+        }
+
+        .contact-number-box strong {
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .section-header-line {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-header-line h3 {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .section-header-line::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-red);
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .info-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .btn-action {
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-action:hover {
+            background: var(--accent-red);
+        }
+
+        .news-item {
+            display: flex;
+            gap: 12px;
+            background: var(--white);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
+
+        .news-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .news-content h4 {
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .news-content span {
+            font-size: 0.75rem;
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        .values-section {
+            background: var(--primary);
+            color: var(--white);
+            padding: 50px 20px;
+        }
+
+        .values-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            max-width: 700px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            opacity: 0.9;
-        }
-
-        .btn-main {
-            display: inline-block;
-            background: var(--white);
-            color: var(--primary);
-            padding: 0.8rem 1.8rem;
-            font-weight: 700;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .btn-main:hover { opacity: 0.9; }
-
-        .section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 2.5rem;
-        }
-
         .grid-6e {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
         }
 
-        .card-e {
+        .card-6e {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .card-6e:hover {
+            background: var(--accent-red);
+        }
+
+        footer {
+            background: #09131d;
+            color: var(--white);
+            padding: 40px 20px 20px 20px;
+            font-size: 0.85rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
             background: var(--white);
-            padding: 1.5rem;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-            border-left: 4px solid var(--secondary);
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
-        .card-e h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .hero-inner, .main-container { grid-template-columns: 1fr; }
             nav ul { display: none; }
-            .hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="top-bar">
+        <div><i class="fa-solid fa-envelope"></i> Kontakt: <strong>ltlaskal@adzcr.eu</strong></div>
+        <div><a onclick="openModal('Krizová pomoc', 'Asociace poskytuje kapacity a podporu IZS při krizových situacích v ČR.')"><i class="fa-solid fa-triangle-exclamation"></i> Krizová Připravenost</a></div>
+    </div>
+
     <header>
         <div class="nav-container">
-            <div class="logo">✚ ADZ<span>ČR</span></div>
+            <a href="#" class="logo-brand">
+                <div class="logo-icon"><i class="fa-solid fa-briefcase-medical"></i></div>
+                <div class="logo-text">
+                    <h1>ADZČR, z.s.</h1>
+                    <span>Asociace dobrovolných záchranářů ČR</span>
+                </div>
+            </a>
             <nav>
                 <ul>
-                    <li><a href="#">O nás</a></li>
-                    <li><a href="#">Aktuality</a></li>
-                    <li><a href="#">Činnost</a></li>
-                    <li><a href="#">Hodnoty (6E)</a></li>
-                    <li><a href="#">Kontakt</a></li>
-                    <li><a href="#" class="btn-donate">Podpořte nás</a></li>
+                    <li><a onclick="openModal('O nás', 'Asociace dobrovolných záchranářů ČR, z.s. je zapsaný spolek zaměřený na poskytování zdravotnického dohledu na společenských, sportovních a kulturních akcích, školení první pomoci a podporu složek IZS.')">O nás</a></li>
+                    <li><a onclick="openModal('Edukace', 'Pořádáme odborné kurzy první pomoci pro veřejnost, firmy i školy s praktickým nácvikem.')">Edukace</a></li>
+                    <li><a onclick="openModal('Co děláme', 'Zajišťujeme kompletní zdravotnické asistence, technickou podporu a osvětové akce pro veřejnost.')">Co děláme</a></li>
+                    <li><a onclick="openModal('Aktuality', 'Mezi nejnovější akce patří účast na Bezpečném Jaru v Radotíně, Kurz ECMS ve Smečně a dohledy na závodních akcích.')">Aktuality</a></li>
+                    <li><a onclick="openModal('Kontakt', '<b>Asociace dobrovolných záchranářů ČR, z.s.</b><br><br>E-mail: ltlaskal@adzcr.eu<br>Web: adzcr.eu')" class="btn-header">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="hero-container">
-            <h1>Asociace dobrovolných záchranářů ČR, z.s.</h1>
-            <p>Poskytujeme zdravotnický dohled, školení první pomoci a technickou pomoc při akcích.</p>
-            <a href="#" class="btn-main">Zjistit více</a>
+        <div class="hero-inner">
+            <div class="hero-features">
+                <div class="feature-box" onclick="openModal('Zdravotnický dohled', 'Kompletní zdravotní zabezpečení sportovních a kulturních akcí kvalifikovanými dobrovolnými záchranáři.')">
+                    <i class="fa-solid fa-truck-medical"></i>
+                    <span>Dohled</span>
+                </div>
+                <div class="feature-box" onclick="openModal('Školení & Kurzy', 'Praktická výuka první pomoci pro školy, firmy i širokou veřejnost.')">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Kurzy</span>
+                </div>
+                <div class="feature-box" onclick="openModal('Partner IZS', 'Pomáháme složkám IZS při mimořádných událostech a záchranných akcích.')">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>IZS</span>
+                </div>
+                <div class="feature-box" onclick="openModal('Inovace', 'Využíváme moderní vybavení a zážitkovou edukaci.')">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Inovace</span>
+                </div>
+            </div>
+
+            <div class="hero-headline">
+                <h2>Pomáháme tam, kde je potřeba</h2>
+                <p>Spolehlivý partner pro zdravotnický dohled na akcích a školení první pomoci.</p>
+                <div class="contact-number-box">
+                    <span>Kontakt pro pořadatele:</span>
+                    <strong>ltlaskal@adzcr.eu</strong>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Naše filozofie (6E)</h2>
-        <div class="grid-6e">
-            <div class="card-e"><h3>Erudice</h3><p>Odborné znalosti a neustálé profesní zdokonalování.</p></div>
-            <div class="card-e"><h3>Empirie</h3><p>Zkušenosti získané přímo z reálné praxe v terénu.</p></div>
-            <div class="card-e"><h3>Edukace</h3><p>Vzdělávání veřejnosti a předávání první pomoci dalším.</p></div>
-            <div class="card-e"><h3>Efektivita</h3><p>Rychlé a přesné rozhodování při zásazích.</p></div>
-            <div class="card-e"><h3>Energie</h3><p>Nasazení a odhodlání pomáhat tam, kde je potřeba.</p></div>
-            <div class="card-e"><h3>Empatie</h3><p>Lidský přístup, porozumění a týmová synergie.</p></div>
+    <div class="main-container">
+        <div>
+            <div class="section-header-line">
+                <h3>Odborná péče & Edukace</h3>
+            </div>
+            <div class="info-card">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Výuka">
+                <h3>Výuka první pomoci a kurzy</h3>
+                <p>Pořádáme vzdělávací akce a zážitkové kurzy první pomoci s důrazem na praktický nácvik resuscitace a ošetření úrazů.</p>
+                <button class="btn-action" onclick="openModal('Kurzy a Školení', 'Nabízíme zážitkové kurzy první pomoci. Výuka zahrnuje KPR, použití AED i ošetření úrazů.')">Detail kurzů</button>
+            </div>
+            <div class="info-card">
+                <h3>Zdravotnické zabezpečení akcí</h3>
+                <p>Zajišťujeme zdravotnický dohled na automobilových závodech, dětských dnech, sportovních i kulturních akcích.</p>
+                <button class="btn-action" onclick="openModal('Poptávka', 'Napište nám na ltlaskal@adzcr.eu a připravíme vám nabídku dohledu na míru.')">Nezávazná poptávka</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="section-header-line">
+                <h3>Nejnovější z ADZČR</h3>
+            </div>
+            <div class="news-item" onclick="openModal('Bezpečné Jaro v Radotíně', 'Aktivní účast na akcích ukázek první pomoci pro veřejnost v Radotíně.')">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=200&q=80" alt="Radotín">
+                <div class="news-content">
+                    <span>AKCE</span>
+                    <h4>Bezpečné Jaro v Radotíně</h4>
+                    <p style="font-size:0.75rem; color:#777;">Ukázky první pomoci.</p>
+                </div>
+            </div>
+            <div class="news-item" onclick="openModal('Kurz ECMS ve Smečně', 'Intenzivní výcvikový kurz krizové medicíny ve Smečně.')">
+                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=200&q=80" alt="Smečno">
+                <div class="news-content">
+                    <span>VZDĚLÁVÁNÍ</span>
+                    <h4>Kurz ECMS ve Smečně</h4>
+                    <p style="font-size:0.75rem; color:#777;">Výcvik záchranářů.</p>
+                </div>
+            </div>
+            <div class="news-item" onclick="openModal('Raccer Buggy Sedlčany', 'Zdravotnický asistenční dohled na závodech v Sedlčanské kotlině.')">
+                <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=200&q=80" alt="Sedlčany">
+                <div class="news-content">
+                    <span>ASISTENCE</span>
+                    <h4>Dohled Raccer Buggy</h4>
+                    <p style="font-size:0.75rem; color:#777;">Zajištění bezpečnosti na závodech.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="values-section">
+        <div class="values-container">
+            <div class="section-header-line" style="border-color: rgba(255,255,255,0.2);">
+                <h3 style="color:var(--white);">Naše Pilíře (6E)</h3>
+            </div>
+            <div class="grid-6e">
+                <div class="card-6e" onclick="openModal('Erudice', 'Odborné znalosti a neustálé vzdělávání.')"><h4>Erudice</h4><p>Odbornost</p></div>
+                <div class="card-6e" onclick="openModal('Empirie', 'Zkušenosti získané z reálné praxe.')"><h4>Empirie</h4><p>Praxe z terénu</p></div>
+                <div class="card-6e" onclick="openModal('Edukace', 'Předávání znalostí první pomoci veřejnosti.')"><h4>Edukace</h4><p>Výuka</p></div>
+                <div class="card-6e" onclick="openModal('Efektivita', 'Rychlé a přesné jednání v krizích.')"><h4>Efektivita</h4><p>Přesný zásah</p></div>
+                <div class="card-6e" onclick="openModal('Energie', 'Vysoké nasazení všech dobrovolníků.')"><h4>Energie</h4><p>Nasazení</p></div>
+                <div class="card-6e" onclick="openModal('Empatie', 'Lidskost a respekt k pacientům.')"><h4>Empatie</h4><p>Lidský přístup</p></div>
+            </div>
         </div>
     </section>
 
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h4>ADZČR, z.s.</h4>
+                <p>Neziskový spolek věnující se dobrovolnému záchranářství, zdravotnickému dohledu a osvětě.</p>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <p>E-mail: ltlaskal@adzcr.eu</p>
+                <p>Web: www.adzcr.eu</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="infoModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModalDirect()">&times;</span>
+            <h3 id="modalTitle" style="color:var(--primary); margin-bottom:15px;"></h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerHTML = text;
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModalDirect() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        function closeModal(event) {
+            if (event.target.id === 'infoModal') {
+                document.getElementById('infoModal').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
